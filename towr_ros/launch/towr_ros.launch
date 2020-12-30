@@ -29,5 +29,8 @@
   
   <!--  Launches the URDF visualizers  --> 
   <include file="$(find xpp_hyq)/launch/all.launch"></include>
-       
+     
+  <!--  Launches the URDF visualizers  --> 
+  <include file="$(find xpp_bolt)/launch/bolt.launch"></include>
+
 </launch>
