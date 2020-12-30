@@ -44,12 +44,12 @@ public:
   BoltKinematicModel () : KinematicModel(2)
   {
     const double z_nominal_b = -0.31;
-    const double y_nominal_b =  0.025;
+    const double y_nominal_b =  0.1235;
 
     nominal_stance_.at(L) << 0.0,  y_nominal_b, z_nominal_b;
     nominal_stance_.at(R) << 0.0, -y_nominal_b, z_nominal_b;
 
-    max_dev_from_nominal_  << 0.05, 0.025, 0.025;
+    max_dev_from_nominal_  << 0.07, 0.05, 0.05;
   }
 };
 
@@ -59,10 +59,20 @@ public:
 class BoltDynamicModel : public SingleRigidBodyDynamics {
 public:
   BoltDynamicModel()
-  : SingleRigidBodyDynamics(1.250,
-                    0.00132170, 0.00000117 , 0.0 , 0.00144035, -0.00001139 ,0.00198196,
+  : SingleRigidBodyDynamics(1.250, // the mass added is total mass, but the mass of the base alone is 0.61436936
+                    0.00578574, 0.01938108 , 0.02476124 , 0.0, 0.0 ,0.0,
                     2) {}
 };
+/*
+
+inertial from urdf:<inertia ixx="0.00578574" ixy="0.0" ixz="0.0" iyy="0.01938108" iyz="0.0" izz="0.02476124"/>
+
+format required:   SingleRigidBodyDynamics (double mass,
+                   double Ixx, double Iyy, double Izz,
+                   double Ixy, double Ixz, double Iyz,
+                   int ee_count);
+*/
+
 
 } /* namespace towr */
 
