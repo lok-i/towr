@@ -33,13 +33,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <towr/models/examples/biped_model.h>
 #include <towr/models/examples/hyq_model.h>
 #include <towr/models/examples/anymal_model.h>
-
+#include <towr/models/examples/bolt_model.h>
 namespace towr {
 
 
 RobotModel::RobotModel(Robot robot)
 {
   switch (robot) {
+
+    case Bolt:
+      dynamic_model_   = std::make_shared<BoltDynamicModel>();
+      kinematic_model_ = std::make_shared<BoltKinematicModel>();
+      break;
     case Monoped:
       dynamic_model_   = std::make_shared<MonopedDynamicModel>();
       kinematic_model_ = std::make_shared<MonopedKinematicModel>();
@@ -56,6 +61,7 @@ RobotModel::RobotModel(Robot robot)
       dynamic_model_   = std::make_shared<AnymalDynamicModel>();
       kinematic_model_ = std::make_shared<AnymalKinematicModel>();
       break;
+
     default:
       assert(false); // Error: Robot model not implemented.
       break;

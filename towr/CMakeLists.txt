@@ -81,12 +81,31 @@ enable_testing()
 add_executable(${PROJECT_NAME}-example 
   test/hopper_example.cc
 )
+
+
 target_link_libraries(${PROJECT_NAME}-example  
   PRIVATE
     ${PROJECT_NAME} 
     ifopt::ifopt_ipopt
 )
 add_test(${PROJECT_NAME}-example ${PROJECT_NAME}-example)
+
+
+add_executable(${PROJECT_NAME}-bolt 
+  test/bolt_example.cc
+)
+
+target_link_libraries(${PROJECT_NAME}-bolt
+  PRIVATE
+    ${PROJECT_NAME} 
+    ifopt::ifopt_ipopt
+)
+add_test(${PROJECT_NAME}-bolt ${PROJECT_NAME}-bolt)
+
+
+
+
+
 
 # unit tests of costs/constraints
 find_package(GTest QUIET)

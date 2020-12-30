@@ -27,8 +27,8 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
 
-#ifndef TOWR_TOWR_ROS_INCLUDE_TOWR_ROS_BIPED_MODEL_H_
-#define TOWR_TOWR_ROS_INCLUDE_TOWR_ROS_BIPED_MODEL_H_
+#ifndef TOWR_TOWR_ROS_INCLUDE_TOWR_ROS_BOLT_MODEL_H_
+#define TOWR_TOWR_ROS_INCLUDE_TOWR_ROS_BOLT_MODEL_H_
 
 #include <towr/models/kinematic_model.h>
 #include <towr/models/single_rigid_body_dynamics.h>
@@ -39,26 +39,26 @@ namespace towr {
 /**
  * @brief The Kinematics of a tow-legged robot built from HyQ legs.
  */
-class BipedKinematicModel : public KinematicModel {
+class BoltKinematicModel : public KinematicModel {
 public:
-  BipedKinematicModel () : KinematicModel(2)
+  BoltKinematicModel () : KinematicModel(2)
   {
-    const double z_nominal_b = -0.40;
-    const double y_nominal_b =  0.247;
+    const double z_nominal_b = -0.31;
+    const double y_nominal_b =  0.025;
 
     nominal_stance_.at(L) << 0.0,  y_nominal_b, z_nominal_b;
     nominal_stance_.at(R) << 0.0, -y_nominal_b, z_nominal_b;
 
-    max_dev_from_nominal_  << 0.15, 0.05, 0.05;
+    max_dev_from_nominal_  << 0.05, 0.025, 0.025;
   }
 };
 
 /**
  * @brief The Dynamics of a tow-legged robot built from HyQ legs.
  */
-class BipedDynamicModel : public SingleRigidBodyDynamics {
+class BoltDynamicModel : public SingleRigidBodyDynamics {
 public:
-  BipedDynamicModel()
+  BoltDynamicModel()
   : SingleRigidBodyDynamics(1.250,
                     0.00132170, 0.00000117 , 0.0 , 0.00144035, -0.00001139 ,0.00198196,
                     2) {}
