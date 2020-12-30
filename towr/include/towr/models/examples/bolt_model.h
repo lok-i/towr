@@ -43,8 +43,8 @@ class BoltKinematicModel : public KinematicModel {
 public:
   BoltKinematicModel () : KinematicModel(2)
   {
-    const double z_nominal_b = -0.31;
-    const double y_nominal_b =  0.1235;
+    const double z_nominal_b = -0.35;
+    const double y_nominal_b =  0.0781;
 
     nominal_stance_.at(L) << 0.0,  y_nominal_b, z_nominal_b;
     nominal_stance_.at(R) << 0.0, -y_nominal_b, z_nominal_b;
